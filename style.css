@@ -1,0 +1,335 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/*
+intro container
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+*/
+
+.intro-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #7c0000;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    display: grid;
+    place-content: center;
+    transition: all .3s;
+}
+
+.intro-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.intro-title {
+    font-size: 2rem;
+    color: white;
+}
+
+.yahtzee-logo {
+    width: 95vw;
+    max-width: 600px;
+}
+
+.tutorial-button,
+.intro-start-button {
+    height: 50px;
+    width: 150px;
+    background-color:#f96401;
+    margin-top: 20px;
+    border-radius: 50px;
+    display: grid;
+    place-content: center;
+    cursor: pointer;
+    transition: .2s box-shadow;
+    border-style: none;
+    border: 1px solid #f9b91a;
+    color:white;
+    font-size: 1rem;
+}
+
+.tutorial-button:hover,
+.intro-start-button:hover {
+    box-shadow: 0 0 10px 2px white;
+}
+
+/*
+tutorial container
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+*/
+
+.tutorial-container {
+    display: none;
+}
+
+/*
+score round container
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+*/
+
+.score-round-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0;
+    min-height: 100vh;
+    background-color: #7c0000;
+    display: grid;
+    place-content:center;
+    z-index: 1;
+    overflow: hidden;
+    transition: 0.3s width;
+}
+
+.score-round-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.score-round-description {
+    color: #f9b91a;
+    width: 400px;
+    text-align: center;
+}
+
+.score-round-accept {
+    margin-top: 30px;
+    height: 50px;
+    width: 50px;
+    font-size: 1.25rem;
+    background-color: #f96401;
+    border-style: none;
+    border-radius: 50px;
+    transition: 0.3s transform, 0.3s box-shadow;
+    cursor: pointer;
+    color: white;
+}
+
+.score-round-accept:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 3px 3px #f9b91a;
+}
+
+/*
+app container
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+*/
+
+.app-container {
+    position: relative;
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #f9b91a;
+}
+
+/*
+board containers
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+*/
+
+.board-container {
+    display: flex;
+    background-color: #7c0000;
+    width: 95vw;
+    max-width: 400px;
+    border-radius: 10px;
+    margin-top: 10px;
+    box-shadow:0 0 10px 2px #f96401;
+}
+
+.board-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 10px 15px;
+}
+
+.board-option-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3px 0 3px;
+}
+
+.option-description {
+    /* color: #f9b91a; */
+    color: white;
+    flex-grow: 1;
+    text-align: center;
+    /* font-size: .875rem; */
+    font-size: .875rem;
+    font-weight: 200;
+    text-transform: uppercase;
+    line-height: 20px;
+}
+
+.score-button {
+    background-color: #f96401;
+    width: 15vw;
+    height: 15vw;
+    max-width: 65px;
+    max-height: 65px;
+    border-radius: 3px;
+    border: 1px solid #f9b91a;
+    cursor: pointer;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #7c0000;
+}
+
+.yahtzee-score {
+    background-color: #f96401;
+    border: 1px solid #f9b91a;
+    cursor: pointer;
+}
+
+.bonus-score {
+    background-color: #f9b91a;
+    border-style: none;
+}
+
+.yahtzee-score,
+.bonus-score {
+    width: 15vw;
+    height: 15vw;
+    max-width: 65px;
+    max-height: 65px;
+    border-radius: 3px;
+    /* border-style: none; */
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333132;
+}
+
+/*
+dice container
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+*/
+
+.dice-container {
+    display: flex;
+    justify-content: space-around;
+    width: 95vw;
+    max-width: 600px;
+    margin-top: 20px;
+}
+
+.dice {
+    width: 15vw;
+    max-width: 80px;
+    height: 15vw;
+    max-height: 80px;
+    border-radius: 10px;
+    cursor: pointer;
+    border-style: none;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.dice-overlay {
+    box-shadow: 0 0 5px 2px #7c0000;
+}
+
+/*
+options container
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+*/
+
+.options-container {
+    display: flex;
+    width: 100%;
+    max-width: 600px;
+    justify-content: space-around;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.roll-1,
+.roll-2,
+.roll-3 {
+    height: 15px;
+    width: 15px;
+    border-radius: 15px;
+    padding-left: 3px;
+    background-color: #f9b91a;
+}
+
+.roll-wrapper {
+    position: relative;
+    background-color: #084f09;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 180px;
+    height: 60px;
+    border-radius: 10px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: .3s box-shadow;
+}
+
+.roll-overlay {
+    display: grid;
+    position: absolute;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+}
+
+.roll-wrapper:hover {
+    box-shadow: 0 0 10px 2px white;
+}
+
+.roll-description {
+    color: white;
+    font-size:1.375rem;
+    font-weight: 300;
+    transform: translateY(3px);
+}
+
+.roll-count-display {
+    transition: .3s all;
+}
+
+.play-reset-button {
+    background-color:#f96401;
+    padding: 5px 20px;
+    border-radius: 10px;
+    display: flex;
+    align-items:center;
+    justify-content:center;
+    cursor: pointer;
+    color: white;
+    font-size: 1.375rem;
+    font-weight: 300;
+    border-style: none;
+    transition: .3s box-shadow;
+}
+
+.play-reset-button:hover {
+    box-shadow: 0 0 10px 2px white;
+}

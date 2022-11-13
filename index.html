@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Yahtzee</title>
+        <meta name="description" content="yahtzee game app">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./style.css">
+    </head>
+    <body>
+        <aside class="intro-container">
+            <div class="intro-wrapper">
+                <img class="yahtzee-logo" src="./resources/yahtzee_logo.png" alt="yahtzee logo">
+                <button class="tutorial-button">Tutorial</button>
+                <button class="intro-start-button">Let's Roll</button>
+            </div>
+        </aside>
+
+        <aside class="tutorial-container"></aside>
+
+        <aside class="score-round-container">
+            <div class="score-round-wrapper">
+                <h2 class="score-round-description">Please score your round.</h2>
+                <button class="score-round-accept">ok</button>
+            </div>
+        </aside>
+
+        <main class="app-container">
+            <section class="board-container">
+                <div class="board-wrapper">
+                    <div class="board-option-wrapper">
+                        <span class="option-description">Ones</span>
+                        <button class="score-button ones-score-button"></button>
+                    </div>
+
+                    <div class="board-option-wrapper">
+                        <span class="option-description">Twos</span>
+                        <button class="score-button twos-score-button"></button>
+                    </div>
+
+                    <div class="board-option-wrapper">
+                        <span class="option-description">Threes</span>
+                        <button class="score-button threes-score-button"></button>
+                    </div>
+
+                    <div class="board-option-wrapper">
+                        <span class="option-description">Fours</span>
+                        <button class="score-button fours-score-button"></button>
+                    </div>
+
+                    <div class="board-option-wrapper">
+                        <span class="option-description">Fives</span>
+                        <button class="score-button fives-score-button"></button>
+                    </div>
+
+                    <div class="board-option-wrapper">
+                        <span class="option-description">Sixes</span>
+                        <button class="score-button sixes-score-button"></button>
+                    </div>
+
+                    <div class="board-option-wrapper">
+                        <span class="option-description">Section<br>Bonus</span>
+                        <button class="bonus-score section-bonus" disabled></button>
+                    </div>
+                </div>
+
+                <div class="board-wrapper">
+                    <div class="board-option-wrapper">
+                        <span class="option-description">3 of a<br>Kind</span>
+                        <button class="score-button three-kind-score-button"></button>
+                    </div>
+
+                    <div class="board-option-wrapper">
+                        <span class="option-description">4 of a<br>Kind</span>
+                        <button class="score-button four-kind-score-button"></button>
+                    </div>
+
+                    <div class="board-option-wrapper">
+                        <span class="option-description">Full<br>House</span>
+                        <button class="score-button full-house-score-button"></button>
+                    </div>
+
+                    <div class="board-option-wrapper">
+                        <span class="option-description">Small<br>Straight</span>
+                        <button class="score-button sm-straight-score-button"></button>
+                    </div>
+
+                    <div class="board-option-wrapper">
+                        <span class="option-description">Large<br>Straight</span>
+                        <button class="score-button lg-straight-score-button"></button>
+                    </div>
+
+                    <div class="board-option-wrapper">
+                        <span class="option-description">Yahtzee</span>
+                        <button class="yahtzee-score"></button>
+                    </div>
+                    <div class="board-option-wrapper">
+                        <span class="option-description">Chance</span>
+                        <button class="score-button chance-score-button"></button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="dice-container">
+                <button class="dice dice-1"></button>
+                <button class="dice dice-2"></button>
+                <button class="dice dice-3"></button>
+                <button class="dice dice-4"></button>
+                <button class="dice dice-5"></button>
+                <!-- <button class="dice dice-overlay"></button> -->
+            </section>
+
+            <section class="options-container">
+                <div class="roll-wrapper">
+                    <div class="roll-overlay"></div>
+                    <span class="roll-description">roll</span>
+                    <div class="roll-count-display roll-1"></div>
+                    <div class="roll-count-display roll-2"></div>
+                    <div class="roll-count-display roll-3"></div>
+                </div>
+                <button class="play-reset-button">play</button>
+            </section>
+        </main>
+        <script src="./index.js" async defer></script>
+    </body>
+</html>
