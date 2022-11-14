@@ -3,9 +3,15 @@ const introStartButton = document.querySelector(".intro-start-button");
 const introContainer = document.querySelector(".intro-container");
 const yahtzeeScore = document.querySelector(".yahtzee-score");
 const scoreButtons = document.querySelectorAll(".score-button");
+const sectionBonus = document.querySelector(".section-bonus");
 const rollCountDisplay = document.querySelectorAll(".roll-count-display");
 const scoreRoundContainer = document.querySelector(".score-round-container");
 const scoreRoundAccept = document.querySelector(".score-round-accept");
+const scoreFinalContainer = document.querySelector(".score-final-container");
+const finalUpperScore = document.querySelector(".final-upper-score");
+const finalLowerScore = document.querySelector(".final-lower-score");
+const finalTotalScore = document.querySelector(".final-total-score");
+const finalRestartGame = document.querySelector(".final-restart-game");
 
 const dice = document.querySelectorAll(".dice");
 
@@ -58,6 +64,26 @@ board
 //////////////////////////////////////////////////////////////////
 */
 
+const checkScoreBonus = () => {
+    let filledCheck = false;
+    let sectionBonusScore = 0;
+    for(let i=0; i<6; i++) {
+        console.log(scoreButtons[i].innerText);
+        if(scoreButtons[i].innerText != "") {
+            filledCheck = true;
+            sectionBonusScore += parseInt(scoreButtons[i].innerText);
+        }else {
+            filledCheck = false;
+            break;
+        }
+    }
+    if(filledCheck == true) {
+        sectionBonus.innerText = sectionBonusScore;
+    }else {
+        return;
+    }
+}
+
 const handleScoreButtonClick = (event) => {
     // console.log(event.target);
     for(let i=0; i<scoreButtonList.length; i++) {
@@ -78,6 +104,7 @@ const handleScoreButtonClick = (event) => {
                     }
                     event.target.innerText = roundScoreCount;
                     event.target.style.backgroundColor = "#f9b91a";
+                    checkScoreBonus();
                     resetRound();
                     break;
                 case 1:
@@ -88,6 +115,7 @@ const handleScoreButtonClick = (event) => {
                     }
                     event.target.innerText = roundScoreCount;
                     event.target.style.backgroundColor = "#f9b91a";
+                    checkScoreBonus();
                     resetRound();
                     break;
                 case 2:
@@ -98,6 +126,7 @@ const handleScoreButtonClick = (event) => {
                     }
                     event.target.innerText = roundScoreCount;
                     event.target.style.backgroundColor = "#f9b91a";
+                    checkScoreBonus();
                     resetRound();
                     break;
                 case 3:
@@ -108,6 +137,7 @@ const handleScoreButtonClick = (event) => {
                     }
                     event.target.innerText = roundScoreCount;
                     event.target.style.backgroundColor = "#f9b91a";
+                    checkScoreBonus();
                     resetRound();
                     break;
                 case 4:
@@ -118,6 +148,7 @@ const handleScoreButtonClick = (event) => {
                     }
                     event.target.innerText = roundScoreCount;
                     event.target.style.backgroundColor = "#f9b91a";
+                    checkScoreBonus();
                     resetRound();
                     break;
                 case 5:
@@ -128,6 +159,7 @@ const handleScoreButtonClick = (event) => {
                     }
                     event.target.innerText = roundScoreCount;
                     event.target.style.backgroundColor = "#f9b91a";
+                    checkScoreBonus();
                     resetRound();
                     break;
                 case 6:
@@ -142,19 +174,23 @@ const handleScoreButtonClick = (event) => {
                             }
                         }
                         if(threeCount > 1) {
-                            for(let i=0; i<diceList.length; i++) {
-                                roundScoreCount += diceList[i];
-                            }
-                            event.target.innerText = roundScoreCount;
-                            event.target.style.backgroundColor = "#f9b91a";
-                            resetRound();
                             break;
                         }else {
                             threeCount = 0;
                             threeNumber = 0;
                         }
                     }
-                    event.target.innerText = 0;
+                    if(threeCount > 1) {
+                        let total = 0;
+                        for(let i=0; i<diceList.length; i++) {
+                            total += diceList[i];
+                        }
+                        event.target.innerText = total;
+                        event.target.style.backgroundColor = "#f9b91a";
+                    }else {
+                        event.target.innerText = 0;
+                        event.target.style.backgroundColor = "#f9b91a";
+                    }
                     resetRound();
                     break;
                 case 7:
@@ -168,21 +204,24 @@ const handleScoreButtonClick = (event) => {
                                 fourNumber = diceList[i];
                             }
                         }
-                        if(fourCount > 2) {
-                            for(let i=0; i<diceList.length; i++) {
-                                roundScoreCount += diceList[i];
-                            }
-                            event.target.innerText = roundScoreCount;
-                            event.target.style.backgroundColor = "#f9b91a";
-                            resetRound();
-                            return;
+                        if(fourCount > 1) {
+                            break;
                         }else {
                             fourCount = 0;
                             fourNumber = 0;
                         }
                     }
-                    event.target.innerText = 0;
-                    event.target.style.backgroundColor = "#f9b91a";
+                    if(fourCount > 2) {
+                        let total = 0;
+                        for(let i=0; i<diceList.length; i++) {
+                            total += diceList[i];
+                        }
+                        event.target.innerText = total;
+                        event.target.style.backgroundColor = "#f9b91a";
+                    }else {
+                        event.target.innerText = 0;
+                        event.target.style.backgroundColor = "#f9b91a";
+                    }
                     resetRound();
                     break;
                 case 8:
@@ -200,7 +239,6 @@ const handleScoreButtonClick = (event) => {
                 case 9:
                     // small straight
                     diceList.sort();
-                    console.log(diceList);
                     let threeKindCount = 0;
                     for(let i=1; i<diceList.length; i++) {
                         if(diceList[i-1] == diceList[i]-1) {
@@ -339,12 +377,12 @@ const scoreYahtzee = () => {
     }
 
     yahtzeeScore.innerText = score["yahtzee"];
+    yahtzeeScore.style.backgroundColor = "#f9b91a";
     resetRound();
 }
 
 const checkYahtzee = () => {
     let yahtzeeBool = true;
-    console.log(diceList);
     for(let i=0; i<diceList.length; i++) {
         if(diceList[0] != diceList[i]) {
             yahtzeeBool = false;
@@ -404,12 +442,68 @@ const slideScoreRoundContainer = () => {
     scoreRoundContainer.style.width = "100vw";
 }
 
+const calculateFinalScore = () => {
+    let finalScore = {"totalUpperScore": 0, "totalLowerScore": 0, "totalScore": 0};
+    for(let i=0; score["upper"].length; i++) {
+        finalScore["totalUpperScore"] += score["upper"][i];
+    }
+    for(let i=0; score["lower"].length; i++) {
+        finalScore["totaLowerScore"] += score["lower"][i];
+    }
+    finalScore["totalScore"] = finalScore["totalUpperScore"] + finalScore["totalLowerScore"];
+    return finalScore;
+}
+
+const handleFinalRestartClick = () => {
+    scoreFinalContainer.style.width = "0px";
+    resetRound();
+    for(let i=0; i<scoreButtons.length; i++) {
+        scoreButtons[i].innerText = "";
+        scoreButtons[i].style.backgroundColor = "#f96401";
+    }
+    yahtzeeScore.innerText = "";
+    yahtzeeScore.style.backgroundColor = "#f96401";
+    sectionBonus.innerText = "";
+}
+
+finalRestartGame.addEventListener("click", handleFinalRestartClick);
+
+const slideFinalContainer = () => {
+    scoreFinalContainer.style.width = "100vw";
+}
+
+const checkGameEnd = () => {
+    let scoreFilled = false;
+    for(let i=0; i<scoreButtons.length; i++) {
+        if(scoreButtons[i].innerText != "") {
+            scoreFilled = true;
+        }else {
+            scoreFilled = false;
+            break;
+        }
+    }
+    if(scoreFilled == true) {
+        // end game
+        if(yahtzeeScore.innerText == "") {
+            yahtzeeScore.innerText = 0;
+        }
+        let finalScore = calculateFinalScore();
+        finalUpperScore.innerText = finalScore["totalUpperScore"];
+        finalLowerScore.innerText = finalScore["totalLowerScore"];
+        finalTotalScore.innerText = finalScore["finalTotalScore"];
+        slideFinalContainer();
+    } else {
+        return;
+    }
+}
+
 const handleRollButtonClick = () => {
     if(rollCount<3) {
         updateRollCountDisplay();
         displayDice();
         rollCount++;
         checkYahtzee();
+        checkGameEnd();
     }else {
         slideScoreRoundContainer();
         return;
